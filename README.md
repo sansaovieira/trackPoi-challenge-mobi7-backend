@@ -48,6 +48,7 @@ trackpoi/
 │   │   │       ├── Mobi7TrackPoiChallengeApplication.java  # classe principal
 │   │   │       ├── config/
 │   │   │       │   ├── RedisConfig.java
+│   │   │       │   ├── SwaggerConfig.java
 │   │   │       │   └── WebConfig.java
 │   │   │       ├── controller/
 │   │   │       │   ├── DwellController.java
