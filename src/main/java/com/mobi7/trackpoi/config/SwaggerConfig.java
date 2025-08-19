@@ -1,7 +1,10 @@
 package com.mobi7.trackpoi.config;
 
+import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.responses.ApiResponse;
 import io.swagger.v3.oas.models.responses.ApiResponses;
 import org.springdoc.core.customizers.OpenApiCustomizer;
@@ -13,10 +16,23 @@ import org.springframework.context.annotation.Configuration;
 public class SwaggerConfig {
 
 	@Bean
-	public OpenAPI customOpenAPI() {
-		return new OpenAPI().info(new Info().title("Mobi7 TrackPOI API").version("1.0").description(
-				"API para gestão de eventos de permanência (dwell events), pontos de interesse (POIs) e posições de veículos."));
-	}
+    OpenAPI springBlogPessoalOpenAPI() {
+        return new OpenAPI()
+            .info(new Info()
+                .title("Mobi7 TrackPOI API")
+                .description("API para gestão de eventos de permanência (dwell events), pontos de interesse (POIs) e posições de veículos.")
+                .version("v0.0.1")
+                .license(new License()
+                    .name("Sansão Vieira")
+                    .url("https://brazil.generation.org/"))
+                .contact(new Contact()
+                    .name("Sansão Vieira")
+                    .url("https://github.com/sansaovieira")
+                    .email("vieirasansao42@gmail.com")))
+            .externalDocs(new ExternalDocumentation()
+                .description("Github")
+                .url("https://github.com/sansaovieira/"));
+    }
 
 	@Bean
 	public GroupedOpenApi trackpoiApi() {
