@@ -24,7 +24,7 @@ public class SwaggerConfig {
                 .version("v0.0.1")
                 .license(new License()
                     .name("Sansão Vieira")
-                    .url("https://brazil.generation.org/"))
+                    .url("https://main-portfolio-henna.vercel.app/"))
                 .contact(new Contact()
                     .name("Sansão Vieira")
                     .url("https://github.com/sansaovieira")
