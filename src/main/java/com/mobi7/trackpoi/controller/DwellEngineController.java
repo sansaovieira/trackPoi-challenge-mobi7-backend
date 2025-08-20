@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/dwell-engine")
-@Tag(name = "Dwell Engine", description = "Endpoints para cálculo de dwell events a partir de posições e POIs")
+@RequestMapping("/dwell-engine")
+@Tag(name = "Dwell Engine", description = "Endpoints for calculating dwell events from positions and POIs")
 public class DwellEngineController {
 
 	private final DwellEngineService dwellEngineService;
@@ -25,9 +25,9 @@ public class DwellEngineController {
 	}
 
 	@PostMapping("/calculate")
-	@Operation(summary = "Calcula dwell events", description = "Recebe uma lista de posições e POIs e retorna os dwell events calculados")
+	@Operation(summary = "Calculates dwell events", description = "Receives a list of positions and POIs and returns the calculated dwell events")
 	public List<DwellEvent> calculateDwellEvents(
-			@Parameter(description = "Objeto contendo posições e POIs") @RequestBody DwellRequest request) {
+			@Parameter(description = "Object containing positions and POIs") @RequestBody DwellRequest request) {
 		return dwellEngineService.calculateDwellEvents(request.getPositions(), request.getPois());
 	}
 

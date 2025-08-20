@@ -11,9 +11,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/vehicles")
+@RequestMapping("/vehicles")
 @CrossOrigin
-@Tag(name = "Veículos", description = "Endpoints para gestão de posições e placas de veículos")
+@Tag(name = "Vehicles", description = "Endpoints for managing vehicle positions and license plates")
 public class VehicleController {
 
 	private final PositionIngestService ingest;
@@ -23,15 +23,15 @@ public class VehicleController {
 	}
 
 	@GetMapping("/plates")
-	@Operation(summary = "Lista todas as placas")
+	@Operation(summary = "List all plates")
 	public List<String> plates() {
 		return ingest.listPlates();
 	}
 
 	@GetMapping("/positions")
-	@Operation(summary = "Lista posições de um veículo", description = "Filtra posições por placa e data")
-	public List<Position> positions(@Parameter(description = "Número da placa do veículo") @RequestParam String plate,
-			@Parameter(description = "Data no formato yyyy-MM-dd") @RequestParam String date) {
+	@Operation(summary = "List all plates", description = "Filter positions by license plate and date")
+	public List<Position> positions(@Parameter(description = "Vehicle license plate number") @RequestParam String plate,
+			@Parameter(description = "Date in format yyyy-MM-dd") @RequestParam String date) {
 		LocalDate d = LocalDate.parse(date);
 		return ingest.fetchPersistAndReturn(plate, d);
 	}

@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/pois")
+@RequestMapping("/pois")
 @CrossOrigin
-@Tag(name = "POIs", description = "Gerencia pontos de interesse (POIs)")
+@Tag(name = "POIs", description = "Manage points of interest (POIs)")
 public class PoiController {
 
 	private final PoiService service;
@@ -22,13 +22,13 @@ public class PoiController {
 	}
 
 	@GetMapping
-	@Operation(summary = "Lista todos os POIs")
+	@Operation(summary = "List all POIs")
 	public List<Poi> list() {
 		return service.list();
 	}
 
 	@PostMapping
-	@Operation(summary = "Cria um novo POI")
+	@Operation(summary = "Creates a new POI")
 	public ResponseEntity<Poi> create(@RequestBody Poi poi) {
 		return ResponseEntity.ok(service.create(poi));
 	}

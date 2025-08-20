@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/dwells")
-@Tag(name = "Dwell Events", description = "Gerencia dwell events persistidos")
+@RequestMapping("/dwells")
+@Tag(name = "Dwell Events", description = "Manages persisted dwell events")
 public class DwellController {
 
 	private final DwellEventRepository dwellEventRepository;
@@ -23,22 +23,22 @@ public class DwellController {
 	}
 
 	@GetMapping
-	@Operation(summary = "Lista todos os dwell events")
+	@Operation(summary = "List all dwell events")
 	public List<DwellEvent> getAllDwellEvents() {
 		return dwellEventRepository.findAll();
 	}
 
 	@GetMapping("/plate/{plate}")
-	@Operation(summary = "Lista dwell events por placa", description = "Filtra dwell events pelo número da placa do veículo")
+	@Operation(summary = "List dwell events by plate", description = "Filter dwell events by vehicle license plate number")
 	public List<DwellEvent> getDwellEventsByPlate(
-			@Parameter(description = "Número da placa do veículo") @PathVariable String plate) {
+			@Parameter(description = "Vehicle license plate number") @PathVariable String plate) {
 		return dwellEventRepository.findByPlate(plate);
 	}
 
 	@PostMapping
-	@Operation(summary = "Cria um dwell event", description = "Persiste um dwell event no banco")
+	@Operation(summary = "Creates a dwell event", description = "Persists a dwell event in the database")
 	public DwellEvent createDwellEvent(
-			@Parameter(description = "Objeto DwellEvent a ser criado") @RequestBody DwellEvent dwellEvent) {
+			@Parameter(description = "DwellEvent object to be created") @RequestBody DwellEvent dwellEvent) {
 		return dwellEventRepository.save(dwellEvent);
 	}
 }
